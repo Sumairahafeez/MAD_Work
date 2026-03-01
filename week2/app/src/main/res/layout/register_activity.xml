@@ -13,8 +13,17 @@
         android:background="@android:color/darker_gray"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/btnSelectImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Image"
+        app:layout_constraintStart_toEndOf="@+id/ivProfile"
+        app:layout_constraintTop_toTopOf="@+id/ivProfile"
+        app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
+        android:layout_marginStart="16dp"/>
 
     <EditText
         android:id="@+id/etName"
@@ -22,10 +31,20 @@
         android:layout_height="wrap_content"
         android:hint="Full Name"
         android:inputType="textCapWords"
-        app:layout_constraintTop_toBottomOf="@id/ivProfile"
+        app:layout_constraintTop_toBottomOf="@+id/ivProfile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@+id/etName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/etPhone"
@@ -33,7 +52,7 @@
         android:layout_height="wrap_content"
         android:hint="Phone Number"
         android:inputType="phone"
-        app:layout_constraintTop_toBottomOf="@id/etName"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
     <CheckBox
@@ -41,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="I accept the Terms and Conditions"
-        app:layout_constraintTop_toBottomOf="@id/rgGender"
+        app:layout_constraintTop_toBottomOf="@+id/rgGender"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="10dp" />
     <TextView
@@ -49,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Select City:"
-        app:layout_constraintTop_toBottomOf="@id/etPhone"
+        app:layout_constraintTop_toBottomOf="@+id/etPhone"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="12dp" />
 
@@ -57,7 +76,7 @@
         android:id="@+id/citySpinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -66,7 +85,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/citySpinner"
+        app:layout_constraintTop_toBottomOf="@+id/citySpinner"
         android:layout_marginTop="12dp">
         <RadioButton android:id="@+id/rbMale" android:text="Male" />
         <RadioButton android:id="@+id/rbFemale" android:text="Female" />
@@ -86,7 +105,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Create Account"
-        app:layout_constraintBottom_toTopOf="@id/fabAdd"
+        app:layout_constraintBottom_toTopOf="@+id/fabAdd"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="16dp" />

@@ -1,8 +1,10 @@
 package com.example.bmicalculator
 
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 
 class ResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -10,18 +12,27 @@ class ResultActivity : AppCompatActivity() {
         setContentView(R.layout.activity_result)
 
         val name = intent.getStringExtra("NAME")
-        val age = intent.getIntExtra("AGE", 0)
-        val height = intent.getDoubleExtra("HEIGHT", 0.0)
-        val weight = intent.getDoubleExtra("WEIGHT", 0.0)
+        val bmi = intent.getDoubleExtra("BMI", 0.0)
 
-        val bmi = weight / ((height / 100) * (height / 100))
+        val tvGreeting = findViewById<TextView>(R.id.tv_greeting)
+        val tvBmiResult = findViewById<TextView>(R.id.tv_bmi_result)
+        val tvBmiCategory = findViewById<TextView>(R.id.tv_bmi_category)
+        val cvResult = findViewById<CardView>(R.id.cv_result)
 
-        val tvName = findViewById<TextView>(R.id.tv_name)
-        val tvAge = findViewById<TextView>(R.id.tv_age)
-        val tvBmi = findViewById<TextView>(R.id.tv_bmi)
+        tvGreeting.text = "Hello, $name!"
+        tvBmiResult.text = String.format("%.1f", bmi)
 
-        tvName.text = "Name: $name"
-        tvAge.text = "Age: $age"
-        tvBmi.text = String.format("BMI: %.2f", bmi)
+        val (category, color) = getBmiCategory(bmi)
+        tvBmiCategory.text = category
+        cvResult.setCardBackgroundColor(color)
+    }
+
+    private fun getBmiCategory(bmi: Double): Pair<String, Int> {
+        return when {
+            bmi < 18.5 -> "Underweight" to Color.parseColor("#3498db") // Blue
+            bmi < 25 -> "Normal" to Color.parseColor("#2ecc71")      // Green
+            bmi < 30 -> "Overweight" to Color.parseColor("#f1c40f")   // Yellow
+            else -> "Obese" to Color.parseColor("#e74c3c")         // Red
+        }
     }
 }

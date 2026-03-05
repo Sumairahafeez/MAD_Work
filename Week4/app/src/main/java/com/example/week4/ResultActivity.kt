@@ -20,8 +20,12 @@ class ResultActivity : AppCompatActivity() {
             insets
         }
 
+        val name = intent.getStringExtra("USER_NAME") ?: "Anonymous"
         val score = intent.getIntExtra("SCORE", 0)
         val total = intent.getIntExtra("TOTAL", 0)
+
+        val tvResultTitle = findViewById<TextView>(R.id.tvResultTitle)
+        tvResultTitle.text = "Congratulations, $name!"
 
         val tvScore = findViewById<TextView>(R.id.tvScore)
         tvScore.text = "Your Score: $score / $total"

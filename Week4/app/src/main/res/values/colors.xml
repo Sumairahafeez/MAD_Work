@@ -2,4 +2,19 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Soft Pastel Palette -->
+    <color name="soft_bg_start">#F5F7FA</color>
+    <color name="soft_bg_end">#B8C6DB</color>
+    <color name="soft_primary">#5D5FEF</color>
+    <color name="soft_secondary">#7879F1</color>
+    <color name="soft_accent">#EF5DA8</color>
+
+    <color name="card_bg">#FFFFFF</color>
+    <color name="text_primary">#2D3436</color>
+    <color name="text_secondary">#636E72</color>
+    <color name="divider_color">#DFE6E9</color>
+
+    <color name="success_color">#00B894</color>
+    <color name="warning_color">#FAB1A0</color>
 </resources>

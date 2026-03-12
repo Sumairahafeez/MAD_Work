@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Requested Color Palette -->
+    <color name="primary">#B75D4D</color>
+    <color name="primary_variant">#7A4A2A</color>
+    <color name="secondary">#4E3B3B</color>
+    <color name="secondary_variant">#4E3B3B</color>
+    <color name="accent">#B75D4D</color>
+    <color name="background">#F8E2D1</color>
+    <color name="card_bg">#FFFFFF</color>
+
+    <color name="text_main">#4E3B3B</color>
+    <color name="text_secondary">#7A4A2A</color>
+    <color name="text_color">#4E3B3B</color>
+    <color name="success_green">#4CAF50</color>
+</resources>

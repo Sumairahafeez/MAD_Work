@@ -1,5 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Keep your existing colors -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="color_primary">#1F1A38</color>
+    <color name="color_secondary">#7B506F</color>
+    <color name="color_accent">#DD99BB</color>
+    <color name="color_tertiary">#EAD7D1</color>
+    <color name="color_quaternary">#DBCDC6</color>
+    <color name="background_white">#FFFFFF</color>
+    <color name="error_red">#F44336</color>
+    <color name="primary_dark">#1F1A38</color>
+    <color name="primary_light">#EAD7D1</color>
 </resources>

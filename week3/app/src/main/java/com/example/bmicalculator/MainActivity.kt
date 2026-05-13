@@ -1,8 +1,8 @@
 package com.example.bmicalculator
-
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
 
@@ -10,7 +10,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         val tilName = findViewById<TextInputLayout>(R.id.til_name)
         val tilAge = findViewById<TextInputLayout>(R.id.til_age)
         val tilHeight = findViewById<TextInputLayout>(R.id.til_height)
@@ -28,7 +27,7 @@ class MainActivity : AppCompatActivity() {
                 val weight = weightStr.toDouble()
 
                 val bmi = weight / ((height / 100) * (height / 100))
-
+                AlertDialog(this)
                 val intent = Intent(this, ResultActivity::class.java)
                 intent.putExtra("NAME", name)
                 intent.putExtra("BMI", bmi)
@@ -49,5 +48,20 @@ class MainActivity : AppCompatActivity() {
         tilWeight.error = if (weight.isBlank()) "Please enter your weight" else null
 
         return name.isNotBlank() && age.isNotBlank() && height.isNotBlank() && weight.isNotBlank()
+    }
+    private fun AlertDialog(context: Context)
+    {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("BMI Calculator")
+        builder.setMessage("Are you sure Data is correct?")
+        builder.setPositiveButton("Yes") { _, _ ->
+            finish()
+        }
+        builder.setNegativeButton("No") { dialog, _ ->
+            dialog.dismiss()
+        }
+        val dialog = builder.create()
+        dialog.show()
+
     }
 }

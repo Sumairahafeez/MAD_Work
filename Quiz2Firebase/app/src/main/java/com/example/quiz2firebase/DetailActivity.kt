@@ -6,11 +6,12 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.example.quiz2firebase.models.Article
+import com.google.android.material.button.MaterialButton
 import java.net.URL
 import java.util.concurrent.Executors
 
@@ -20,6 +21,12 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
+        val toolbar = findViewById<Toolbar>(R.id.detailToolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        toolbar.setNavigationOnClickListener { onBackPressed() }
+
         val article = intent.getSerializableExtra("article") as? Article
 
         if (article != null) {
@@ -28,14 +35,14 @@ class DetailActivity : AppCompatActivity() {
             val sourceDateView = findViewById<TextView>(R.id.detailSourceDate)
             val descriptionView = findViewById<TextView>(R.id.detailDescription)
             val contentView = findViewById<TextView>(R.id.detailContent)
-            val btnReadFull = findViewById<Button>(R.id.btnReadFull)
+            val btnReadFull = findViewById<MaterialButton>(R.id.btnReadFull)
 
             titleView.text = article.title
-            sourceDateView.text = "${article.source.name} | ${article.publishedAt}"
+            sourceDateView.text = "${article.source.name} • ${article.publishedAt}"
             descriptionView.text = article.description
             contentView.text = article.content
 
-            // Simple image loader
+            // Improved image loader using background thread
             val executor = Executors.newSingleThreadExecutor()
             val handler = Handler(Looper.getMainLooper())
             executor.execute {

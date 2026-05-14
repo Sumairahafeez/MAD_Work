@@ -5,16 +5,17 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quiz2firebase.api.NewsApiService
 import com.example.quiz2firebase.models.NewsResponse
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,11 +27,11 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: NewsAdapter
     private lateinit var progressBar: ProgressBar
+    private lateinit var errorLayout: View
     private lateinit var errorText: TextView
     private lateinit var countrySpinner: Spinner
-    private lateinit var refreshButton: Button
+    private lateinit var refreshButton: FloatingActionButton
 
-    // IMPORTANT: Replace with your actual gnews.io API key
     private val API_KEY = "376cf037a7757263ea098d7678c939fd"
     
     private val countries = mapOf(
@@ -46,8 +47,12 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
         recyclerView = findViewById(R.id.newsRecyclerView)
         progressBar = findViewById(R.id.progressBar)
+        errorLayout = findViewById(R.id.errorLayout)
         errorText = findViewById(R.id.errorText)
         countrySpinner = findViewById(R.id.countrySpinner)
         refreshButton = findViewById(R.id.refreshButton)
@@ -87,14 +92,9 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun fetchNews(country: String) {
-        if (API_KEY == "YOUR_API_KEY") {
-            showError("Please set your API Key in HomeActivity.kt")
-            return
-        }
-
         progressBar.visibility = View.VISIBLE
         recyclerView.visibility = View.GONE
-        errorText.visibility = View.GONE
+        errorLayout.visibility = View.GONE
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://gnews.io/api/v4/")
@@ -122,7 +122,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun showError(message: String) {
         errorText.text = message
-        errorText.visibility = View.VISIBLE
+        errorLayout.visibility = View.VISIBLE
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 }
